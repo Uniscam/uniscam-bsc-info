@@ -4,18 +4,18 @@ import { HttpLink } from 'apollo-link-http'
 
 export const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.bscgraph.org/subgraphs/name/wowswap'
+    uri: 'http://127.0.0.1:8010/subgraphs/name/frankwei/bestswap1',
   }),
   cache: new InMemoryCache(),
-  shouldBatch: true
+  shouldBatch: true,
 })
 
 export const healthClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.bscgraph.org/graphql'
+    uri: 'http://127.0.0.1:8031/graphql',
   }),
   cache: new InMemoryCache(),
-  shouldBatch: true
+  shouldBatch: true,
 })
 
 export const v1Client = new ApolloClient({
@@ -23,12 +23,12 @@ export const v1Client = new ApolloClient({
     uri: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap'
   }),
   cache: new InMemoryCache(),
-  shouldBatch: true
+  shouldBatch: true,
 })
 
 export const blockClient = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.bscgraph.org/subgraphs/name/bsc-blocks'
+    uri: 'https://api.bscgraph.org/subgraphs/name/bsc-blocks',
   }),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 })
