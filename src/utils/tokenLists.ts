@@ -23,7 +23,7 @@ function uriToHttp(uri: string): string[] {
       return []
   }
 }
-
+// eslint-disable-next-line
 const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
 
 /**
