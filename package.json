@@ -1,8 +1,8 @@
 {
-  "name": "bestswap-info",
+  "name": "uniscam-info",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bestswap.info",
+  "homepage": "https://uniscam.info",
   "dependencies": {
     "@popperjs/core": "^2.4.2",
     "@reach/portal": "^0.10.3",
