@@ -1,5 +1,4 @@
-export const FACTORY_ADDRESS = '0xfFf951ca2Ef9A8fc8F51A0DFcF7E11B81F3383d2'
-
+export const FACTORY_ADDRESS = '0x56171094a15B8caC4314C0F8930100B939503bd9'
 export const BUNDLE_ID = '1'
 
 export const timeframeOptions = {
