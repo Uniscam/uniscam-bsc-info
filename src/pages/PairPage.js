@@ -60,7 +60,7 @@ const PanelWrapper = styled.div`
 const TokenDetailsLayout = styled.div`
   display: inline-grid;
   width: 100%;
-  grid-template-columns: auto auto auto auto 1fr;
+  grid-template-columns: auto auto auto auto auto 1fr;
   column-gap: 60px;
   align-items: start;
 
@@ -118,7 +118,12 @@ function PairPage({ pairAddress, history }) {
     volumeChangeUSD,
     oneDayVolumeUntracked,
     volumeChangeUntracked,
-    liquidityChangeUSD
+    liquidityChangeUSD,
+    fee,
+    dummy0,
+    dummy1,
+    deposit0,
+    deposit1,
   } = usePairData(pairAddress)
 
   useEffect(() => {
@@ -181,6 +186,11 @@ function PairPage({ pairAddress, history }) {
   // formatted symbols for overflow
   const formattedSymbol0 = token0?.symbol.length > 6 ? token0?.symbol.slice(0, 5) + '...' : token0?.symbol
   const formattedSymbol1 = token1?.symbol.length > 6 ? token1?.symbol.slice(0, 5) + '...' : token1?.symbol
+
+  const token0MintRate = (deposit0 / (reserve0 - dummy0) * 100).toFixed(2)
+  const token1MintRate = (deposit1 / (reserve1 - dummy1) * 100).toFixed(2)
+  const dummy0Percentage = (dummy0 / reserve0 * 100).toFixed(2)
+  const dummy1Percentage = (dummy1 / reserve1 * 100).toFixed(2)
 
   const below1080 = useMedia('(max-width: 1080px)')
   const below900 = useMedia('(max-width: 900px)')
@@ -461,11 +471,64 @@ function PairPage({ pairAddress, history }) {
                       <CopyHelper toCopy={token1?.id} />
                     </AutoRow>
                   </Column>
+                  <Column>
+                    <TYPE.main>Fee</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>
+                      <RowFixed>
+                        <span>{fee} %</span>
+                      </RowFixed>
+                    </TYPE.main>
+                  </Column>
                   <ButtonLight color={backgroundColor}>
                     <Link color={backgroundColor} external href={'https://bscscan.com/address/' + pairAddress}>
                       View on BscScan ↗
                     </Link>
                   </ButtonLight>
+                </TokenDetailsLayout>
+              </Panel>
+              <RowBetween style={{ marginTop: '3rem' }}>
+                <TYPE.main fontSize={'1.125rem'}>Other Information</TYPE.main>{' '}
+              </RowBetween>
+              <Panel
+                rounded
+                style={{
+                  marginTop: '1.5rem'
+                }}
+                p={20}
+              >
+                <TokenDetailsLayout>
+                  <Column>
+                    <TYPE.main>{token0?.symbol ?? ''} Mint Rate</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>
+                      <RowFixed>
+                        {token0MintRate} %
+                      </RowFixed>
+                    </TYPE.main>
+                  </Column>
+                  <Column>
+                    <TYPE.main>{token1?.symbol ?? ''} Mint Rate</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>
+                      <RowFixed>
+                        {token1MintRate} %
+                      </RowFixed>
+                    </TYPE.main>
+                  </Column>
+                  <Column>
+                    <TYPE.main>Dummy0 %</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>
+                      <RowFixed>
+                        {dummy0Percentage} %
+                      </RowFixed>
+                    </TYPE.main>
+                  </Column>
+                  <Column>
+                    <TYPE.main>Dummy1 %</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>
+                      <RowFixed>
+                        {dummy1Percentage} %
+                      </RowFixed>
+                    </TYPE.main>
+                  </Column>
                 </TokenDetailsLayout>
               </Panel>
             </>
