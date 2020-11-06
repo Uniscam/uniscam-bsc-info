@@ -71,7 +71,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     address
   )}/logo.png`
 
-  if (address.toLowerCase() === '0x12e2fcfa079fc23ae82ab82707b402410321103f')
+  if (address?.toLowerCase() === '0x12e2fcfa079fc23ae82ab82707b402410321103f')
     path = 'https://ssimg.frontenduse.top/article/2020/10/22/2be5eb8b1704d4c663d1b68509a8a353.png'
 
   return (
