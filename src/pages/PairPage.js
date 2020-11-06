@@ -60,7 +60,7 @@ const PanelWrapper = styled.div`
 const TokenDetailsLayout = styled.div`
   display: inline-grid;
   width: 100%;
-  grid-template-columns: auto auto auto auto 1fr;
+  grid-template-columns: auto auto auto auto auto 1fr;
   column-gap: 60px;
   align-items: start;
 
@@ -118,7 +118,8 @@ function PairPage({ pairAddress, history }) {
     volumeChangeUSD,
     oneDayVolumeUntracked,
     volumeChangeUntracked,
-    liquidityChangeUSD
+    liquidityChangeUSD,
+    fee,
   } = usePairData(pairAddress)
 
   useEffect(() => {
@@ -460,6 +461,14 @@ function PairPage({ pairAddress, history }) {
                       </TYPE.main>
                       <CopyHelper toCopy={token1?.id} />
                     </AutoRow>
+                  </Column>
+                  <Column>
+                    <TYPE.main>Fee</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>
+                      <RowFixed>
+                        <span>{fee} %</span>
+                      </RowFixed>
+                    </TYPE.main>
                   </Column>
                   <ButtonLight color={backgroundColor}>
                     <Link color={backgroundColor} external href={'https://bscscan.com/address/' + pairAddress}>
