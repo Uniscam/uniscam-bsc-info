@@ -112,6 +112,8 @@ function PairPage({ pairAddress, history }) {
     token1,
     reserve0,
     reserve1,
+    reserveWithDummy0,
+    reserveWithDummy1,
     reserveUSD,
     trackedReserveUSD,
     oneDayVolumeUSD,
@@ -187,10 +189,10 @@ function PairPage({ pairAddress, history }) {
   const formattedSymbol0 = token0?.symbol.length > 6 ? token0?.symbol.slice(0, 5) + '...' : token0?.symbol
   const formattedSymbol1 = token1?.symbol.length > 6 ? token1?.symbol.slice(0, 5) + '...' : token1?.symbol
 
-  const token0MintRate = (deposit0 / (reserve0 - dummy0) * 100).toFixed(2)
-  const token1MintRate = (deposit1 / (reserve1 - dummy1) * 100).toFixed(2)
-  const dummy0Percentage = (dummy0 / reserve0 * 100).toFixed(2)
-  const dummy1Percentage = (dummy1 / reserve1 * 100).toFixed(2)
+  const token0MintRate = (deposit0 / (reserveWithDummy0 - dummy0) * 100).toFixed(2)
+  const token1MintRate = (deposit1 / (reserveWithDummy1 - dummy1) * 100).toFixed(2)
+  const dummy0Percentage = (dummy0 / reserveWithDummy0 * 100).toFixed(2)
+  const dummy1Percentage = (dummy1 / reserveWithDummy1 * 100).toFixed(2)
 
   const below1080 = useMedia('(max-width: 1080px)')
   const below900 = useMedia('(max-width: 900px)')
