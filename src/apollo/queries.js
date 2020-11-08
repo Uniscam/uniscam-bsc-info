@@ -637,6 +637,8 @@ const PairFields = `
     }
     reserve0
     reserve1
+    reserveWithDummy0
+    reserveWithDummy1
     reserveUSD
     totalSupply
     trackedReserveETH
