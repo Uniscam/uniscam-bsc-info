@@ -182,15 +182,15 @@ function PairPage({ pairAddress, history }) {
     token1?.derivedETH && ethPrice ? formattedNum(parseFloat(token1.derivedETH) * parseFloat(ethPrice), true) : ''
 
   // rates
-  const token0Rate = reserve0 && reserve1 ? formattedNum(reserve1 / reserve0) : '-'
-  const token1Rate = reserve0 && reserve1 ? formattedNum(reserve0 / reserve1) : '-'
+  const token0Rate = reserveWithDummy0 && reserveWithDummy1 ? formattedNum(reserveWithDummy1 / reserveWithDummy0) : '-'
+  const token1Rate = reserveWithDummy0 && reserveWithDummy1 ? formattedNum(reserveWithDummy0 / reserveWithDummy1) : '-'
 
   // formatted symbols for overflow
   const formattedSymbol0 = token0?.symbol.length > 6 ? token0?.symbol.slice(0, 5) + '...' : token0?.symbol
   const formattedSymbol1 = token1?.symbol.length > 6 ? token1?.symbol.slice(0, 5) + '...' : token1?.symbol
 
-  const token0MintRate = (deposit0 / (reserveWithDummy0 - dummy0) * 100).toFixed(2)
-  const token1MintRate = (deposit1 / (reserveWithDummy1 - dummy1) * 100).toFixed(2)
+  const token0MintRate = (deposit0 / reserve0 * 100).toFixed(2)
+  const token1MintRate = (deposit1 / reserve1 * 100).toFixed(2)
   const dummy0Percentage = (dummy0 / reserveWithDummy0 * 100).toFixed(2)
   const dummy1Percentage = (dummy1 / reserveWithDummy1 * 100).toFixed(2)
 
@@ -401,8 +401,8 @@ function PairPage({ pairAddress, history }) {
                   <PairChart
                     address={pairAddress}
                     color={backgroundColor}
-                    base0={reserve1 / reserve0}
-                    base1={reserve0 / reserve1}
+                    base0={reserveWithDummy1 / reserveWithDummy0}
+                    base1={reserveWithDummy0 / reserveWithDummy1}
                   />
                 </Panel>
               </PanelWrapper>
