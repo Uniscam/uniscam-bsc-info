@@ -500,7 +500,7 @@ function PairPage({ pairAddress, history }) {
               >
                 <TokenDetailsLayout>
                   <Column>
-                    <TYPE.main>{token0?.symbol ?? ''} Mint Rate</TYPE.main>
+                    <TYPE.main>{token0?.symbol ?? ''} Mining Rate</TYPE.main>
                     <TYPE.main style={{ marginTop: '.5rem' }}>
                       <RowFixed>
                         {token0MintRate} %
@@ -508,7 +508,7 @@ function PairPage({ pairAddress, history }) {
                     </TYPE.main>
                   </Column>
                   <Column>
-                    <TYPE.main>{token1?.symbol ?? ''} Mint Rate</TYPE.main>
+                    <TYPE.main>{token1?.symbol ?? ''} Mining Rate</TYPE.main>
                     <TYPE.main style={{ marginTop: '.5rem' }}>
                       <RowFixed>
                         {token1MintRate} %
