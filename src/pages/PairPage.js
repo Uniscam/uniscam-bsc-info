@@ -477,7 +477,7 @@ function PairPage({ pairAddress, history }) {
                     <TYPE.main>Fee</TYPE.main>
                     <TYPE.main style={{ marginTop: '.5rem' }}>
                       <RowFixed>
-                        <span>{fee} %</span>
+                        <span>{fee/10} %</span>
                       </RowFixed>
                     </TYPE.main>
                   </Column>
