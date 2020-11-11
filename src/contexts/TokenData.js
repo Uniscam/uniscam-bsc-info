@@ -502,7 +502,7 @@ const getIntervalTokenData = async (tokenAddress, startTime, interval = 3600, la
     let index = 0
     for (var brow in result) {
       let timestamp = brow.split('b')[1]
-      if (timestamp) {
+      if (timestamp && result[brow]) {
         values[index].priceUSD = result[brow].ethPrice * values[index].derivedETH
         index += 1
       }
