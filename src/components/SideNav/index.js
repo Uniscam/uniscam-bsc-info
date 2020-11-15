@@ -173,7 +173,7 @@ function SideNav({ history }) {
               </Link>
             </HeaderText> */}
             <HeaderText>
-              <Link href="https://twitter.com/y3dscam" target="_blank">
+              <Link href="https://twitter.com/UnisaveProtocol" target="_blank">
                 Twitter
               </Link>
             </HeaderText>
