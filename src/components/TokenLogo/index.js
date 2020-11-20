@@ -80,7 +80,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     path = ForceProtocol
   else if (address?.toLowerCase() === '0x3fda9383a84c05ec8f7630fe10adf1fac13241cc')
     path = DegoLogo
-  else if (address?.toLowerCase() === '0xFfAFfF7686F2d7Cc0e4727C5d30BD37b05708a1C')
+  else if (address?.toLowerCase() === '0xffafff7686f2d7cc0e4727c5d30bd37b05708a1c')
     path = DAOLogo    
 
   return (
