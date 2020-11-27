@@ -4,6 +4,7 @@ import { isAddress } from '../../utils/index.js'
 import PlaceHolder from '../../assets/placeholder.png'
 import EthereumLogo from '../../assets/eth.png'
 import DegoLogo from '../../assets/dego.png'
+import MetaLogo from '../../assets/meta.png'
 import DAOLogo from '../../assets/DAO.png'
 import ForceProtocol from '../../assets/forceprotocol.webp'
 
@@ -82,6 +83,8 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     path = DegoLogo
   else if (address?.toLowerCase() === '0xffafff7686f2d7cc0e4727c5d30bd37b05708a1c')
     path = DAOLogo    
+  else if (address?.toLowerCase() === '0xacae234ea5fddd1657038b7aa6b597664056c954')
+    path = MetaLogo
 
   return (
     <Inline>
