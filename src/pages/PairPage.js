@@ -126,6 +126,8 @@ function PairPage({ pairAddress, history }) {
     dummy1,
     deposit0,
     deposit1,
+    yToken0,
+    yToken1,
   } = usePairData(pairAddress)
 
   useEffect(() => {
@@ -498,6 +500,40 @@ function PairPage({ pairAddress, history }) {
                 }}
                 p={20}
               >
+                {yToken0 && yToken1 && (<TokenDetailsLayout style={{ marginBottom: '1rem' }}>
+                  <Column>
+                    <TYPE.main>
+                      <RowFixed>
+                        <FormattedName text={yToken0?.symbol ?? ''} maxCharacters={8} />{' '}
+                        <span style={{ marginLeft: '4px' }}>Address</span>
+                      </RowFixed>
+                    </TYPE.main>
+                    <AutoRow align="flex-end">
+                      <TYPE.main style={{ marginTop: '.5rem' }} fontSize={16}>
+                        {yToken0 && yToken0.id.slice(0, 6) + '...' + yToken0.id.slice(38, 42)}
+                      </TYPE.main>
+                      <CopyHelper toCopy={yToken0?.id} />
+                    </AutoRow>
+                  </Column>
+                  <Column>
+                    <TYPE.main>
+                      <RowFixed>
+                        <FormattedName text={yToken1?.symbol ?? ''} maxCharacters={8} />{' '}
+                        <span style={{ marginLeft: '4px' }}>Address</span>
+                      </RowFixed>
+                    </TYPE.main>
+                    <AutoRow align="flex-end">
+                      <TYPE.main style={{ marginTop: '.5rem' }} fontSize={16}>
+                        {yToken1 && yToken1.id.slice(0, 6) + '...' + yToken1.id.slice(38, 42)}
+                      </TYPE.main>
+                      <CopyHelper toCopy={yToken1?.id} />
+                    </AutoRow>
+                  </Column>
+                  <Column>
+                    <TYPE.main>Strategy</TYPE.main>
+                    <TYPE.main style={{ marginTop: '.5rem' }}>YFII</TYPE.main>
+                  </Column>
+                </TokenDetailsLayout>)}
                 <TokenDetailsLayout>
                   <Column>
                     <TYPE.main>{token0?.symbol ?? ''} Mining Rate</TYPE.main>

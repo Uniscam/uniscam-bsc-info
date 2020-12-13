@@ -653,6 +653,8 @@ const PairFields = `
     deposit0
     deposit1
     fee
+    yToken0
+    yToken1
   }
 `
 
