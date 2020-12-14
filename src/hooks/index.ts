@@ -4,6 +4,7 @@ import Vibrant from 'node-vibrant'
 import { hex } from 'wcag-contrast'
 import { isAddress } from '../utils'
 import copy from 'copy-to-clipboard'
+import { APY_TYPE_LIST } from '../constants'
 
 export function useColor(tokenAddress, token) {
   const [color, setColor] = useState('#2172E5')
@@ -95,4 +96,15 @@ export default function useInterval(callback: () => void, delay: null | number) 
     }
     return
   }, [delay])
+}
+
+export type ApyTypeItem = {
+  yToken: string
+  type: string
+}
+export const useApyType = (address: string): [ApyTypeItem, string] => {
+  const addr = address.toLowerCase()
+  const find = APY_TYPE_LIST.find(item => item.yToken.toLowerCase() === addr)
+  if (find) return [find, find.type]
+  return [{ yToken: address, type: 'none' }, 'none']
 }

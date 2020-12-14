@@ -10,12 +10,26 @@ import TokenLogo from '../TokenLogo'
 import Link from '../Link'
 import FormattedName from '../FormattedName'
 import { formattedNum, formattedPercent } from '../../utils'
+import { useApyType } from '../../hooks'
+import getDForceApy from '../../api/getApy'
 
 function StrategyListItem({ item, index, color, disbaleLinks }) {
   const below600 = useMedia('(max-width: 600px)')
+  const [, apyType] = useApyType(item.yToken)
+  const [itemApy, setItemApy] = useState(0)
+  
+  useEffect(() => {
+    const getApy = async () => {
+      if (apyType === 'dForce') {
+        const { apy: apyRes } = await getDForceApy(item.uTokenSymbol)
+        setItemApy(apyRes)
+      }
+    }
+    getApy()
+  }, [apyType, item.uTokenSymbol])
 
   const liquidity = formattedNum(item.uTokenTotalLiquidity, true)
-  const apy = formattedPercent(0)
+  const apy = formattedPercent(itemApy)
 
   return (
     <DashGrid style={{ height: '48px' }} disbaleLinks={disbaleLinks} focus={true}>

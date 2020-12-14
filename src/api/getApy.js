@@ -9,7 +9,11 @@ const getDForceApy = async (symbol) => {
   const data = resData.data
   const result = data[`d${symbol.toUpperCase()}`]
   console.log('getDForceApy::resData:', resData, 'symbol:', symbol, 'result:', result)
-  return result
+
+  return {
+    apy: result.now_apy,
+    totalUnderlying: result.total_underlying
+  }
 }
 
 export default getDForceApy
