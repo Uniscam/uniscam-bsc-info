@@ -25,8 +25,8 @@ export default function DoubleTokenLogo({ a0, a1, size = 24, margin = false }) {
 
   return (
     <TokenWrapper sizeraw={size} margin={margin}>
-      <HigherLogo address={a0} size={size.toString() + 'px'} sizeraw={size} />
-      <CoveredLogo address={a1} size={size.toString() + 'px'} sizeraw={size} />
+      <HigherLogo address={a0} size={size} sizeraw={size} />
+      <CoveredLogo address={a1} size={size} sizeraw={size} />
     </TokenWrapper>
   )
 }
