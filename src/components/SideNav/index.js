@@ -7,7 +7,7 @@ import { useMedia } from 'react-use'
 import { transparentize } from 'polished'
 import { TYPE } from '../../Theme'
 import { withRouter } from 'react-router-dom'
-import { TrendingUp, List, PieChart, Disc } from 'react-feather'
+import { TrendingUp, List, PieChart, Disc, Clock } from 'react-feather'
 import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
@@ -145,7 +145,6 @@ function SideNav({ history }) {
                     Pairs
                   </Option>
                 </BasicLink>
-
                 <BasicLink to="/accounts">
                   <Option
                     activeText={
@@ -156,6 +155,12 @@ function SideNav({ history }) {
                   >
                     <List size={20} style={{ marginRight: '.75rem' }} />
                     Accounts
+                  </Option>
+                </BasicLink>
+                <BasicLink to="/strategy">
+                  <Option activeText={history.location.pathname === '/strategy' ?? undefined}>
+                    <Clock size={20} style={{ marginRight: '.75rem' }} />
+                    Strategy
                   </Option>
                 </BasicLink>
               </AutoColumn>

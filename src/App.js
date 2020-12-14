@@ -19,6 +19,8 @@ import { OVERVIEW_TOKEN_BLACKLIST, PAIR_BLACKLIST } from './constants'
 import LocalLoader from './components/LocalLoader'
 import { useLatestBlock } from './contexts/Application'
 
+import StrategyPage from './pages/StrategyPage'
+
 const AppWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -170,6 +172,12 @@ function App() {
               <Route path="/accounts">
                 <LayoutWrapper savedOpen={savedOpen} setSavedOpen={setSavedOpen}>
                   <AccountLookup />
+                </LayoutWrapper>
+              </Route>
+
+              <Route path="/strategy">
+                <LayoutWrapper savedOpen={savedOpen} setSavedOpen={setSavedOpen}>
+                  <StrategyPage />
                 </LayoutWrapper>
               </Route>
 

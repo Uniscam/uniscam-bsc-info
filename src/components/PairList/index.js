@@ -58,7 +58,7 @@ const DashGrid = styled.div`
 
   @media screen and (min-width: 740px) {
     padding: 0 1.125rem;
-    grid-template-columns: 1.5fr 1fr 1fr};
+    grid-template-columns: 1.5fr 1fr 1fr;
     grid-template-areas: ' name liq vol pool ';
   }
 
