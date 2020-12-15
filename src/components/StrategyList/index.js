@@ -11,7 +11,7 @@ import Link from '../Link'
 import FormattedName from '../FormattedName'
 import { formattedNum, formattedPercent } from '../../utils'
 import { useApyType } from '../../hooks'
-import getDForceApy from '../../api/getApy'
+import { getDForceApy, getForTubeApy } from '../../api/getApy'
 
 function StrategyListItem({ item, index, color, disbaleLinks }) {
   const below600 = useMedia('(max-width: 600px)')
@@ -24,12 +24,17 @@ function StrategyListItem({ item, index, color, disbaleLinks }) {
         const { apy: apyRes } = await getDForceApy(item.uTokenSymbol)
         setItemApy(apyRes)
       }
+      if (apyType === 'ForTube') {
+        const { apy: apyRes } = await getForTubeApy(item.uTokenSymbol)
+        setItemApy(apyRes)
+      }
     }
     getApy()
   }, [apyType, item.uTokenSymbol])
 
   const liquidity = formattedNum(item.uTokenTotalLiquidity, true)
   const apy = formattedPercent(itemApy)
+  console.log('item.uTokenSymbol:', item.uTokenSymbol, 'itemApy:', itemApy, 'apy:', apy,)
 
   return (
     <DashGrid style={{ height: '48px' }} disbaleLinks={disbaleLinks} focus={true}>

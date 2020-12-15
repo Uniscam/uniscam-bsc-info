@@ -54,5 +54,13 @@ export const APY_TYPE_LIST = [
   {
     yToken: '0x03eFf545083D98063EDB933BF03D69c5D22409C3',
     type: 'dForce'
+  },
+  {
+    yToken: '0xAaE97DC55ca5147d6b4e1e6C2c43fF89Af1dC146',
+    type: 'ForTube'
+  },
+  {
+    yToken: '0x7fb93197BBd466231147A082bbF3F41Dd9e3ed6A',
+    type: 'ForTube'
   }
 ]
