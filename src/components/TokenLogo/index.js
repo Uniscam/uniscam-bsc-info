@@ -8,6 +8,12 @@ import MetaLogo from '../../assets/meta.png'
 import DAOLogo from '../../assets/DAO.png'
 import ForceProtocol from '../../assets/forceprotocol.webp'
 
+const isStringSize = (size) => {
+  if (typeof size === 'string') return parseInt(size)
+  if (typeof size === 'number') return size
+  return size
+}
+
 const BAD_IMAGES = {}
 
 const Inline = styled.div`
@@ -17,8 +23,8 @@ const Inline = styled.div`
 `
 
 const Image = styled.img`
-  width: ${({ size }) => size + 'px'};
-  height: ${({ size }) => size + 'px'};
+  width: ${({ size }) => isStringSize(size) + 'px'};
+  height: ${({ size }) => isStringSize(size) + 'px'};
   background-color: white;
   border-radius: 50%;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
@@ -30,12 +36,14 @@ const StyledEthereumLogo = styled.div`
   justify-content: center;
 
   > img {
-    width: ${({ size }) => size + 'px'};
-    height: ${({ size }) => size + 'px'};
+    width: ${({ size }) => isStringSize(size) + 'px'};
+    height: ${({ size }) => isStringSize(size) + 'px'};
   }
 `
 
 export default function TokenLogo({ address, header = false, size = 24, ...rest }) {
+  size = isStringSize(size)
+
   const [error, setError] = useState(false)
 
   useEffect(() => {
