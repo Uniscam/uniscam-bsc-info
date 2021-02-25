@@ -116,9 +116,7 @@ function App() {
           </WarningWrapper>
         )}
         {globalData &&
-        Object.keys(globalData).length > 0 &&
-        globalChartData &&
-        Object.keys(globalChartData).length > 0 ? (
+        globalChartData ? (
           <BrowserRouter>
             <Switch>
               <Route
