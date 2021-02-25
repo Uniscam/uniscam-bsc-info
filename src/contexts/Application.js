@@ -14,6 +14,7 @@ const UPDATE_SESSION_START = 'UPDATE_SESSION_START'
 const UPDATE_WEB3 = 'UPDATE_WEB3'
 const UPDATED_SUPPORTED_TOKENS = 'UPDATED_SUPPORTED_TOKENS'
 const UPDATE_LATEST_BLOCK = 'UPDATE_LATEST_BLOCK'
+const UPDATE_HEAD_BLOCK = 'UPDATE_HEAD_BLOCK'
 
 const SUPPORTED_TOKENS = 'SUPPORTED_TOKENS'
 const TIME_KEY = 'TIME_KEY'
@@ -21,6 +22,7 @@ const CURRENCY = 'CURRENCY'
 const SESSION_START = 'SESSION_START'
 const WEB3 = 'WEB3'
 const LATEST_BLOCK = 'LATEST_BLOCK'
+const HEAD_BLOCK = 'HEAD_BLOCK'
 
 const ApplicationContext = createContext()
 
@@ -64,6 +66,13 @@ function reducer(state, { type, payload }) {
       return {
         ...state,
         [LATEST_BLOCK]: block
+      }
+    }
+    case UPDATE_HEAD_BLOCK: {
+      const { block } = payload
+      return {
+        ...state,
+        [HEAD_BLOCK]: block,
       }
     }
 
@@ -144,14 +153,23 @@ export default function Provider({ children }) {
     })
   }, [])
 
+  const updateHeadBlock = useCallback((block) => {
+    dispatch({
+      type: UPDATE_HEAD_BLOCK,
+      payload: {
+        block,
+      },
+    })
+  }, [])
+
   return (
     <ApplicationContext.Provider
       value={useMemo(
         () => [
           state,
-          { update, updateSessionStart, updateTimeframe, updateWeb3, updateSupportedTokens, updateLatestBlock }
+          { update, updateSessionStart, updateTimeframe, updateWeb3, updateSupportedTokens, updateLatestBlock, updateHeadBlock }
         ],
-        [state, update, updateTimeframe, updateWeb3, updateSessionStart, updateSupportedTokens, updateLatestBlock]
+        [state, update, updateTimeframe, updateWeb3, updateSessionStart, updateSupportedTokens, updateLatestBlock, updateHeadBlock]
       )}
     >
       {children}
@@ -159,10 +177,11 @@ export default function Provider({ children }) {
   )
 }
 
-export function useLatestBlock() {
-  const [state, { updateLatestBlock }] = useApplicationContext()
+export function useLatestBlocks() {
+  const [state, { updateLatestBlock, updateHeadBlock }] = useApplicationContext()
 
   const latestBlock = state?.[LATEST_BLOCK]
+  const headBlock = state?.[HEAD_BLOCK]
 
   useEffect(() => {
     async function fetch() {
@@ -170,9 +189,11 @@ export function useLatestBlock() {
         const res = await healthClient.query({
           query: SUBGRAPH_HEALTH
         })
-        const block = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number
-        if (block) {
-          updateLatestBlock(block)
+        const syncedBlock = res.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number
+        const headBlock = res.data.indexingStatusForCurrentVersion.chains[0].chainHeadBlock.number
+        if (syncedBlock && headBlock) {
+          updateLatestBlock(syncedBlock)
+          updateHeadBlock(headBlock)
         }
       } catch (e) {
         console.log(e)
@@ -181,9 +202,9 @@ export function useLatestBlock() {
     if (!latestBlock) {
       fetch()
     }
-  }, [latestBlock, updateLatestBlock])
+  }, [latestBlock, updateLatestBlock, updateHeadBlock])
 
-  return latestBlock
+  return [latestBlock, headBlock]
 }
 
 export function useCurrentCurrency() {
