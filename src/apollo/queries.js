@@ -3,7 +3,7 @@ import { FACTORY_ADDRESS, BUNDLE_ID } from '../constants'
 
 export const SUBGRAPH_HEALTH = gql`
   query health {
-    indexingStatusForCurrentVersion(subgraphName: "uniscam/swap-test2") {
+    indexingStatusForCurrentVersion(subgraphName: "kodamasakuno/unisave-exchange-bsc") {
       synced
       health
       chains {
