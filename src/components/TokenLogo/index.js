@@ -6,6 +6,7 @@ import EthereumLogo from '../../assets/eth.png'
 import DegoLogo from '../../assets/dego.png'
 import MetaLogo from '../../assets/meta.png'
 import DAOLogo from '../../assets/DAO.png'
+import NAPLogo from '../../assets/NAP.png'
 import ForceProtocol from '../../assets/forceprotocol.webp'
 
 const isStringSize = (size) => {
@@ -93,6 +94,8 @@ export default function TokenLogo({ address, header = false, size = 24, ...rest 
     path = DAOLogo    
   else if (address?.toLowerCase() === '0xacae234ea5fddd1657038b7aa6b597664056c954')
     path = MetaLogo
+  else if (address?.toLowerCase() === '0xc9a960dc0c04cde1c5729300892cb27eade5e4d0')
+    path = NAPLogo
 
   return (
     <Inline>
