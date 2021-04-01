@@ -91,10 +91,10 @@ export default function TokenLogo({ address, header = false, size = 24, ...rest 
   else if (address?.toLowerCase() === '0x3fda9383a84c05ec8f7630fe10adf1fac13241cc')
     path = DegoLogo
   else if (address?.toLowerCase() === '0xffafff7686f2d7cc0e4727c5d30bd37b05708a1c')
-    path = DAOLogo    
+    path = DAOLogo
   else if (address?.toLowerCase() === '0xacae234ea5fddd1657038b7aa6b597664056c954')
     path = MetaLogo
-  else if (address?.toLowerCase() === '0xc9a960dc0c04cde1c5729300892cb27eade5e4d0')
+  else if (address?.toLowerCase() === '0x4d05de8d57b238457d62dadd6d3b395bbc8c9824')
     path = NAPLogo
 
   return (
