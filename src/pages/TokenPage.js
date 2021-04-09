@@ -30,6 +30,7 @@ import { Hover, PageWrapper, ContentWrapper, StyledIcon } from '../components'
 import { PlusCircle, Bookmark } from 'react-feather'
 import FormattedName from '../components/FormattedName'
 import { useListedTokens } from '../contexts/Application'
+import { OFFICIAL_URLS } from '../constants'
 
 const DashboardWrapper = styled.div`
   width: 100%;
@@ -222,15 +223,20 @@ function TokenPage({ address, history }) {
               </RowFixed>
               <span>
                 <RowFixed ml={below500 ? '0' : '2.5rem'} mt={below500 ? '1rem' : '0'}>
+                  {OFFICIAL_URLS[id] && (<Link href={OFFICIAL_URLS[id]} target="_blank">
+                    <ButtonDark mr={below1080 && '.5rem'} color={backgroundColor}>
+                      Official Page
+                    </ButtonDark>
+                  </Link>)}
                   {!!!savedTokens[address] && !below800 ? (
                     <Hover onClick={() => addToken(address, symbol)}>
                       <StyledIcon>
-                        <PlusCircle style={{ marginRight: '0.5rem' }} />
+                        <PlusCircle style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }} />
                       </StyledIcon>
                     </Hover>
                   ) : !below1080 ? (
                     <StyledIcon>
-                      <Bookmark style={{ marginRight: '0.5rem', opacity: 0.4 }} />
+                      <Bookmark style={{ marginLeft: '0.5rem', marginRight: '0.5rem', opacity: 0.4 }} />
                     </StyledIcon>
                   ) : (
                     <></>

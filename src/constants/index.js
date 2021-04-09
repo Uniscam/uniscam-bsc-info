@@ -64,3 +64,9 @@ export const APY_TYPE_LIST = [
     type: 'ForTube'
   }
 ]
+
+export const OFFICIAL_URLS = {
+  "0x12e2fcfa079fc23ae82ab82707b402410321103f": "https://unisave.exchange/",
+  "0xebd31fd3e751b19b745e64b6422ef195b7015cc4": "https://matataki.io/p/7908",
+  "0x4d05de8d57b238457d62dadd6d3b395bbc8c9824": "http://nashpt.co/"
+}
