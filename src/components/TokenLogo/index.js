@@ -98,6 +98,8 @@ export default function TokenLogo({ address, header = false, size = 24, ...rest 
     path = NAPLogo
   else if (address?.toLowerCase() === '0xebd31fd3e751b19b745e64b6422ef195b7015cc4')
     path = 'https://raw.githubusercontent.com/Uniscam/token-icons/master/bsc-mainnet/0xebd31fd3e751b19b745e64b6422ef195b7015cc4.png'
+  else if (address?.toLowerCase() === '0xb8e3399d81b76362b76453799c95fee868c728ea')
+    path = 'https://raw.githubusercontent.com/Uniscam/token-icons/master/bsc-mainnet/0xb8e3399d81b76362b76453799c95fee868c728ea.png'
 
   return (
     <Inline>
